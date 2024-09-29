@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  userID      Int      @id @default(autoincrement())
+  name        String
+  email       String   @unique
+  password    String
+  bio         String?
+  DOB         DateTime?
+  posts       Post[]
+  likes       Like[]
+  comments    Comment[]
+}
+
+model Post {
+  postID     Int      @id @default(autoincrement())
+  userID     Int
+  content    String
+  imageURL   String?
+  comments   Int?
+  likes      Int?
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userID], references: [userID])
+  likesList  Like[]
+  commentsList Comment[]
+}
+
+model Like {
+  likeID     Int      @id @default(autoincrement())
+  postID     Int
+  userID     Int
+  createdAt  DateTime @default(now())
+  post       Post     @relation(fields: [postID], references: [postID])
+  user       User     @relation(fields: [userID], references: [userID])
+
+  @@unique([postID, userID]) // Composite unique constraint
+
+}
+
+model Comment {
+  commentID  Int      @id @default(autoincrement())
+  userID     Int
+  postID     Int
+  content    String
+  createdAt  DateTime @default(now())
+  post       Post     @relation(fields: [postID], references: [postID])
+  user       User     @relation(fields: [userID], references: [userID])
+}
