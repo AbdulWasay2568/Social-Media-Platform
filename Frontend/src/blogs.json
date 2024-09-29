@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Understanding React Components",
+    "author": "Abdullah",
+    "date": "August 24, 2024",
+    "content": "React components are the building blocks of any React application."
+  },
+  {
+    "id": 2,
+    "title": "Getting Started with TypeScript",
+    "author": "Ahmed Naeem",
+    "date": "September 23, 2024",
+    "content": "TypeScript is a strongly typed superset of JavaScript that adds optional static types."
+  },
+  {
+    "id": 3,
+    "title": "Mastering Tailwind CSS",
+    "author": "Ali Akram",
+    "date": "July 5, 2024",
+    "content": "Tailwind CSS is a utility-first CSS framework for rapidly building custom designs."
+  }
+]
